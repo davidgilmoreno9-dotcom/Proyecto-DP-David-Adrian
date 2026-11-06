@@ -9,7 +9,9 @@ import java.util.*;
  */
 public class EBCompany  
 {
-    //TODO: Complete this code
+    private String name;
+    private ArrayList<ElectricBike> subscribed_bikes;
+    private ArrayList<BikeStation> stations;
 
     /**
      * Constructor for objects of class EVCompany.
@@ -17,7 +19,9 @@ public class EBCompany
      */
     public EBCompany(String name)
     {
-        //TODO: Complete this code
+        this.name = name;
+        subscribed_bikes = new ArrayList<>();
+        stations = new ArrayList<>();
     }
 
     /**
@@ -26,7 +30,7 @@ public class EBCompany
      */
     public void addElectricBike(ElectricBike bike)
     {       
-        //TODO: Complete this code
+        subscribed_bikes.add(bike);
     }
 
     
@@ -36,7 +40,7 @@ public class EBCompany
      */
     public void addBikeStation(BikeStation station)
     {       
-        //TODO: Complete this code
+        stations.add(station);
     }
     
     
@@ -47,7 +51,11 @@ public class EBCompany
      */
     public BikeStation getBikeStation(String id)
     {
-        //TODO: Complete this code
+       for (int i = 0; i < stations.size();i++){
+            if(stations.get(i).getId().equals(id)){
+                return stations.get(i);
+            }
+        }
         return null;
     }
 
@@ -58,7 +66,11 @@ public class EBCompany
      */
     public BikeStation getBikeStation(Location location)
     {
-        //TODO: Complete this code
+        for (int i = 0; i < stations.size();i++){
+            if(stations.get(i).getLocation().equals(location)){
+                return stations.get(i);
+            }
+        }
         return null;
     }
     
@@ -67,15 +79,15 @@ public class EBCompany
      * @return The total number of managed {@link BikeStation}s.
      */
     public int getNumberOfStations(){
-        //TODO: Complete this code
-        return 0;
+        return stations.size();
     }
     
     /**
      * Clears all managed bikes and stations, resetting the company to an empty state.
      */
     public void reset(){
-        //TODO: Complete this code
+        stations.clear();
+        subscribed_bikes.clear();
     }
     
 }

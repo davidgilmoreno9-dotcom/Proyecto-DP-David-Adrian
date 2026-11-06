@@ -1,5 +1,5 @@
 #BlueJ class context
-#Thu Oct 22 13:08:49 CEST 2026
+#Fri Nov 06 18:00:05 CET 2026
 comment0.target=Location
 comment0.text=\r\n Model a location in a two-dimensional grid city using (x, y) coordinates.\r\n @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes \r\n @version 2026.10.13\r\n
 comment1.params=x y

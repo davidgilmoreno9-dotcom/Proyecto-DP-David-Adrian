@@ -41,6 +41,15 @@ public class BikeStation
        //TODO: Complete this code   
         return null;        
     }
+    
+    /**
+     * @return The unique identifier of the charging station.
+     */
+    public Location getLocation()
+    {
+        //TODO: Complete this code   
+        return null;
+    }
 
     /**
      * @return The unique identifier of the charging station.

@@ -1,5 +1,5 @@
 #BlueJ class context
-#Thu Oct 22 12:14:07 CEST 2026
+#Fri Nov 06 18:00:14 CET 2026
 comment0.target=ComparatorDocksId
 comment0.text=\r\n Compares two {@link Dock} objects based on their **ID** string in **ascending** order.\r\n This is typically used as a final tie-breaker in multi-criteria sorting.\r\n @author DP Clasess\r\n @version 2026.10.13\r\n
 comment1.params=c1 c2
