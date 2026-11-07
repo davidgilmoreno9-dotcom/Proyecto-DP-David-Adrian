@@ -1,17 +1,31 @@
 #BlueJ class context
-#Fri Nov 06 18:00:14 CET 2026
+#Sat Nov 07 19:21:35 CET 2026
 comment0.target=LocationTest
-comment0.text=\r\n Test implementation of the {@link Location} class.\r\n Provides unit tests for methods like {@code distance()} and {@code nextLocation()}.\r\n @author David J. Barnes and Michael K\u00F6lling\r\n @version 2016.02.29\r\n @version 2026.10.13 DP classes (adaptado a Java 8+)\r\n
+comment0.text=\r\n The test class LocationTest.\r\n\r\n @author  Adri\u00E1n Serrat Leal\r\n @version 7/11/2026\r\n
 comment1.target=LocationTest()
-comment1.text=\r\n Default constructor for test class LocationTest.\r\n
+comment1.text=\r\n Default constructor for test class LocationTest\r\n
+comment10.target=void testNextLocationYaEnDestino()
+comment10.text=\r\n Test if the start location is the destination\r\n
+comment11.target=void testDistance()
+comment11.text=\r\n Test the calculation of the distance\r\n
+comment12.target=void testIsAdjacent()
+comment12.text=\r\n Test if the locations one step right, up or diagonally are consider adjacent\r\n
+comment13.target=void testEquals()
+comment14.target=void testToString()
 comment2.target=void setUp()
-comment2.text=\r\n Sets up the test fixture.\r\n Called before every test case method.\r\n
+comment2.text=\r\n Sets up the test fixture.\r\n\r\n Called before every test case method.\r\n
 comment3.target=void tearDown()
-comment3.text=\r\n Tears down the test fixture.\r\n Called after every test case method.\r\n
-comment4.target=void testDistance()
-comment4.text=\r\n Test the {@code distance} method of the {@link Location} class.\r\n Checks distances from a central location to surrounding points.\r\n
-comment5.target=void testAdjacentLocations()
-comment5.text=\r\n Test the {@code nextLocation} method when the destination is adjacent \r\n (one step away in any direction).\r\n
-comment6.target=void testNonAdjacentLocations()
-comment6.text=\r\n Test the {@code nextLocation} method when the destination is not adjacent \r\n (more than one step away).\r\n
-numComments=7
+comment3.text=\r\n Tears down the test fixture.\r\n\r\n Called after every test case method.\r\n
+comment4.target=void testConstructorValido()
+comment4.text=\r\n Test that a Location object is correctly intialised\r\n
+comment5.target=void testConstructorXNegativa()
+comment5.text=\r\n Test negative x exception.\r\n
+comment6.target=void testConstructorYNegativa()
+comment6.text=\r\n Test negative y exception.\r\n
+comment7.target=void testNextLocationDiagonal()
+comment7.text=\r\n Test if the new location does one step diagonally correctly\r\n
+comment8.target=void testNextLocationVertically()
+comment8.text=\r\n Test if the new location does one step vertically correctly\r\n
+comment9.target=void testNextLocationHorizontal()
+comment9.text=\r\n Test if the new location does one step horizontally correctly\r\n
+numComments=15

@@ -3,7 +3,8 @@ import java.util.*;
 /**
  * Model a location in a two-dimensional grid city using (x, y) coordinates.
  * @author David J. Barnes and Michael Kölling
- * @author DP classes 
+ * @author DP classes
+ * @author Adrián Serrat Leal and David Gil Moreno
  * @version 2026.10.13
  */
 public class Location
@@ -31,28 +32,26 @@ public class Location
         this.y = y;
     }
     
-    /**
-     * Generates the next location to visit in a direct line (Manhattan-style diagonal/straight move) 
+     /**
+     * Generates the next location to visit in a direct line (Chebyshev/diagonal move) 
      * from this location to the destination.
-     * @param destination The {@link Location} we want to get to.
-     * @return The next {@link Location} one step closer to the destination. Returns the destination
-     * if this location is already the destination.
+     * @param destination The target {@link Location}.
+     * @return The next {@link Location} one step closer to the destination. 
+     * Returns the destination if this location is already at destination.
      */
     public Location nextLocation(Location destination)
     {
-        if(destination.x > this.x){
-            this.x++;
+        int nextX = x; int nextY = y;
+        if(destination.x == nextX && destination.y == nextY){
+            return destination;
         }
-        else if (destination.x < this.x){
-            this.x--;
+        if(destination.x != nextX){
+            nextX = (destination.x > nextX) ? nextX + 1 : nextX - 1;
         }
-        if(destination.y > this.y){
-            this.y++;
+        if(destination.y != nextY){
+            nextY = (destination.y > nextY) ? nextY + 1 : nextY - 1;
         }
-        else if (destination.y < this.y){
-            this.y--;
-        }
-        return null;
+        return new Location(nextX,nextY);
     }
 
     /**
@@ -63,9 +62,7 @@ public class Location
      */
     public int distance(Location destination)
     {
-        int inix=Math.abs(destination.x - this.x);
-        int iniy=Math.abs(destination.y - this.y);
-        return (inix > iniy) ? inix : iniy ;
+        return Math.max(Math.abs(destination.x - x), Math.abs(destination.y - y));
     }
     
     /**
@@ -76,7 +73,14 @@ public class Location
     @Override
     public boolean equals(Object other)
     {
-        return (this == other) ? true : false;
+        if (this == other){
+            return true;
+        }
+        if (!(other instanceof Location)){
+            return false;   
+        }
+        Location location = (Location) other;
+        return x == location.x && y == location.y;
     }
     
     /**
@@ -115,8 +119,12 @@ public class Location
     {
         return y;
     }
-    
-    public boolean isAdjacent (Location location2){
-        return (this.distance(location2) == 1);
+    /**
+     * Checks if another location is adjacent (one move away)
+     * @param location The other {@link location} to check.
+     * @return {@code true} if they are ajacent, {@code false} otherwise.
+     */
+    public boolean isAdjacent (Location location){
+        return (this.distance(location) == 1);
     }
 }

@@ -1,5 +1,5 @@
 #BlueJ class context
-#Fri Nov 06 18:00:13 CET 2026
+#Sat Nov 07 17:58:21 CET 2026
 comment0.target=ElectricBike
 comment0.text=\r\n Model the common elements of an Electric bike (EB) that operates \r\n within the simulation, moving towards a target and potentially recharging.\r\n * @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes \r\n @version 2026.10.13\r\n
 comment1.params=company location targetLocation id batteryCapacity
