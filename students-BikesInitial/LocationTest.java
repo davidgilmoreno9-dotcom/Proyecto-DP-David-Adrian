@@ -45,7 +45,7 @@ public class LocationTest
     {
         Location loc = new Location(10, 6);
         assertEquals(10, loc.getX());
-        assertEquals(20, loc.getY());
+        assertEquals(6, loc.getY());
     }
      /**
      * Test negative x exception.
