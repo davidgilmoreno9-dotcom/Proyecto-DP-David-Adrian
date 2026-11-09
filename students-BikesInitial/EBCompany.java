@@ -23,6 +23,13 @@ public class EBCompany
         subscribed_bikes = new ArrayList<>();
         stations = new ArrayList<>();
     }
+    
+    /**
+     * @return the name of the EBCompany 
+     */
+    public String getName(){
+        return name;
+    }
 
     /**
      * Adds an {@link ElectricBike} to the company's fleet.
@@ -76,10 +83,17 @@ public class EBCompany
     
     
     /**
-     * @return The total number of managed {@link BikeStation}s.
+     * @return The total number of managed {@link ElectricBikes}s.
      */
     public int getNumberOfStations(){
         return stations.size();
+    }
+    
+    /**
+     * @return The total number of bikes {@link BikeStation}s.
+     */
+    public int getNumberOfBikes(){
+        return subscribed_bikes.size();
     }
     
     /**

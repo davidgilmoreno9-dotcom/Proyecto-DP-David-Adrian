@@ -11,15 +11,19 @@ import java.util.stream.Collectors;
  */
 public class BikeStation
 {
-    //TODO: Complete this code
-
+    private String idStation;
+    private Location location;
+    private ArrayList<Dock> docks;
+    
     /**
      * Constructor for objects of class BikeStation.
      * //TODO complete the JavaDoc comments
      */
     public BikeStation(  )
     {
-        //TODO: Complete this code
+        idStation = "00CC";
+        location = new Location (0,0);
+        docks = new ArrayList<>();
     }
 
     /**
@@ -28,7 +32,9 @@ public class BikeStation
      */
     public BikeStation(String id, Location location)
     {
-        //TODO: Complete this code
+        idStation = id;
+        this.location = location;
+        docks = new ArrayList<>();
     }
     
     /**
@@ -47,17 +53,15 @@ public class BikeStation
      */
     public Location getLocation()
     {
-        //TODO: Complete this code   
-        return null;
+        return location;
     }
 
     /**
      * @return The unique identifier of the charging station.
      */
     public String getId()
-    {
-        //TODO: Complete this code   
-        return null;
+    {   
+        return idStation;
     }
     
     
@@ -67,7 +71,7 @@ public class BikeStation
      */
     public void addDock(Dock dock)
     {
-       //TODO: Complete this code
+       docks.add(dock);
     }
     
     /**
@@ -77,7 +81,7 @@ public class BikeStation
      */
     public void setLocation(Location location)
     {
-       //TODO: Complete this code   
+       this.location = location;   
     }
 
     //TODO complete the rest of the code
