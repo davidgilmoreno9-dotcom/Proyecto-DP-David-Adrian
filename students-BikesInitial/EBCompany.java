@@ -65,7 +65,25 @@ public class EBCompany
         }
         return null;
     }
-
+    /**
+     * Finds the closest {@link BikeStation} to the given origin that the specified
+     * {@link ElectricBike} can reach with its current battery level.
+     * @param EV The electric bike whose current location is the route's origin
+     *           and whose battery level determines which stations are reachable
+     * @return The reachable {@link BikeStation} with the shortest adjusted route to targetLocation  ,
+     *          or {@code null} if np station is reachable with the bike's
+     *         current battery level (or if {@link #stations} is empty)
+     */
+    public BikeStation findBestStation(ElectricBike EV)
+    {
+        return stations.stream()
+                .filter(station -> EV.enoughBattery(station.getLocation()))
+                .filter(station -> !EV.getVisitedStations().contains(station))
+                .min(Comparator.comparingInt(station -> EV.getLocation().distance(station.getLocation())
+            + station.getLocation().distance(EV.getTargetLocation())))
+                .orElse(null);
+    }
+    
     /**
      * Retrieves a {@link BikeStation} by its {@link Location}.
      * @param location The {@link Location} of the station to find.
