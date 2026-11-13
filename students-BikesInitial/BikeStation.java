@@ -52,6 +52,12 @@ public class BikeStation
         return null;
     }
     
+    /**
+     * @return The total number of bikes {@link Docks}s.
+     */
+    public int getNumberOfDocks(){
+        return docks.size();
+    }
     
     /**
      * Set the current location of the charging station.
@@ -131,6 +137,5 @@ public class BikeStation
     
     
 
-    //TODO complete the rest of the code
 
 }

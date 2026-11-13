@@ -1,27 +1,29 @@
 #BlueJ class context
-#Fri Nov 13 02:29:50 CET 2026
+#Fri Nov 13 17:08:28 CET 2026
 comment0.target=BikeStation
 comment0.text=\r\n Models an Electric Vehicle Charging Station.\r\n A charging station contains multiple {@link Dock} units.\r\n @author DP classes \r\n @version 2026.10.13\r\n
 comment1.target=BikeStation()
 comment1.text=\r\n Constructor for objects of class BikeStation.\r\n //TODO complete the JavaDoc comments\r\n
+comment10.params=dock
+comment10.target=void addDock(Dock)
+comment10.text=\r\n Adds a new {@link Dock} to the station.\r\n @param dock The new Dock unit.\r\n
 comment2.params=id location
 comment2.target=BikeStation(java.lang.String, Location)
 comment2.text=\r\n Constructor for objects of class BikeStation.\r\n //TODO complete the JavaDoc comments\r\n
 comment3.target=Dock getFreeDock()
 comment3.text=\r\n Retrieves the first free {@link Dock} found at the station.\r\n @return A free {@link Dock}, or possibly throws an exception if none are found (depending on stream implementation details).\r\n **Note\: The implementation assumes at least one free dock exists if called.**\r\n
-comment4.params=location
-comment4.target=void setLocation(Location)
-comment4.text=\r\n Set the current location of the charging station.\r\n @param location Where it is. Must not be null.\r\n @throws NullPointerException If location is null.\r\n
-comment5.target=Location getLocation()
-comment5.text=\r\n @return The unique identifier of the charging station.\r\n
-comment6.target=java.lang.String getId()
+comment4.target=int getNumberOfDocks()
+comment4.text=\r\n @return The total number of bikes {@link Docks}s.\r\n
+comment5.params=location
+comment5.target=void setLocation(Location)
+comment5.text=\r\n Set the current location of the charging station.\r\n @param location Where it is. Must not be null.\r\n @throws NullPointerException If location is null.\r\n
+comment6.target=Location getLocation()
 comment6.text=\r\n @return The unique identifier of the charging station.\r\n
-comment7.target=java.util.ArrayList getDocks()
-comment7.text=\r\n @return La coleccion de docks que hay en la estaci\u00F3n.\r\n
-comment8.params=id
-comment8.target=Dock getDock(java.lang.String)
-comment8.text=\r\n @return el dock con el id que hemos establecido.\r\n
-comment9.params=dock
-comment9.target=void addDock(Dock)
-comment9.text=\r\n Adds a new {@link Dock} to the station.\r\n @param dock The new Dock unit.\r\n
-numComments=10
+comment7.target=java.lang.String getId()
+comment7.text=\r\n @return The unique identifier of the charging station.\r\n
+comment8.target=java.util.ArrayList getDocks()
+comment8.text=\r\n @return La coleccion de docks que hay en la estaci\u00F3n.\r\n
+comment9.params=id
+comment9.target=Dock getDock(java.lang.String)
+comment9.text=\r\n @return el dock con el id que hemos establecido.\r\n
+numComments=11

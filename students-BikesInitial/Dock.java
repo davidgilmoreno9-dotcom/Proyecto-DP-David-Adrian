@@ -50,6 +50,13 @@ public class Dock
     }
     
     /**
+     * Change the value of amountCollected to amount.
+     * @param amount. New amount of amountCollected.
+     */
+    public void setOcupedDock(){
+        free = false;
+    }
+    /**
      * Returns a string representation of the dock, including its ID, speed, fee, and the number of EVs recharged.
      * @return A string representation of the dock.
      */

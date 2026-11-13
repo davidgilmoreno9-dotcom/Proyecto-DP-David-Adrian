@@ -1,0 +1,27 @@
+#BlueJ class context
+#Fri Nov 13 17:15:06 CET 2026
+comment0.target=BikeStationTest
+comment0.text=\r\n The test class BikeStationTest.\r\n\r\n @author  (your name)\r\n @version (a version number or a date)\r\n
+comment1.target=BikeStationTest()
+comment1.text=\r\n Default constructor for test class BikeStationTest\r\n
+comment10.target=void TestGetDock()
+comment10.text=\r\n Comprueba que devuelve un dock por su id\r\n
+comment11.target=void TestAddDock()
+comment11.text=\r\n Comprueba que a\u00F1ade los docks en orden correctamente\r\n
+comment2.target=void setUp()
+comment2.text=\r\n Sets up the test fixture.\r\n\r\n Called before every test case method.\r\n
+comment3.target=void tearDown()
+comment3.text=\r\n Tears down the test fixture.\r\n\r\n Called after every test case method.\r\n
+comment4.target=void TestConstructor()
+comment4.text=\r\n Comprueba que el constructor funciona\r\n
+comment5.target=void TestConstructorP()
+comment5.text=\r\n Comprueba que el constructor parametrizado funciona\r\n
+comment6.target=void TestGetFreeDock()
+comment6.text=\r\n Comprueba que devuelve un dock libre\r\n
+comment7.target=void TestGetNumbersOfDocks()
+comment7.text=\r\n Comprueba que devuelve el numero de docks de una estacion\r\n
+comment8.target=void TestSetLoacation()
+comment8.text=\r\n Comprueba que establece correctamnete la localicacion establecida\r\n
+comment9.target=void TestGetDocks()
+comment9.text=\r\n Comprueba que devuelve la cadena de docks\r\n
+numComments=12
