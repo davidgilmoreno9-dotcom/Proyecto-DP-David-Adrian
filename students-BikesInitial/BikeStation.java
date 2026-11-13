@@ -21,7 +21,7 @@ public class BikeStation
      */
     public BikeStation(  )
     {
-        idStation = "00CC";
+        idStation = "CC00";
         location = new Location (0,0);
         docks = new ArrayList<>();
     }
@@ -44,8 +44,23 @@ public class BikeStation
      */
     public Dock getFreeDock()
     {
-       //TODO: Complete this code   
-        return null;        
+        for(int i = 0; i < docks.size(); i++){
+            if (docks.get(i).getDockFree() == true){
+                return docks.get(i);
+            } 
+        }
+        return null;
+    }
+    
+    
+    /**
+     * Set the current location of the charging station.
+     * @param location Where it is. Must not be null.
+     * @throws NullPointerException If location is null.
+     */
+    public void setLocation(Location location)
+    {
+       this.location = location;   
     }
     
     /**
@@ -64,6 +79,27 @@ public class BikeStation
         return idStation;
     }
     
+    /**
+     * @return La coleccion de docks que hay en la estación.
+     */
+    public ArrayList<Dock> getDocks()
+    {   
+        return docks;
+    }
+    
+    
+    /**
+     * @return el dock con el id que hemos establecido.
+     */
+    public Dock getDock(String id)
+    {   
+        for(int i = 0; i < docks.size(); i++){
+            if (docks.get(i).getIdDock().equals(id)){
+                return docks.get(i);
+            } 
+        }
+        return null;
+    }
     
     /**
      * Adds a new {@link Dock} to the station.
@@ -71,18 +107,29 @@ public class BikeStation
      */
     public void addDock(Dock dock)
     {
-       docks.add(dock);
+    for(int i = 0; i < docks.size(); i++) {
+        if (dock.getChargingSpeed() > docks.get(i).getChargingSpeed()){
+            docks.add(i, dock);
+            return;
+        }
+        else if (dock.getChargingSpeed() == docks.get(i).getChargingSpeed()){
+            if (dock.getChargingFee() < docks.get(i).getChargingFee()){
+                docks.add(i, dock);
+                return;
+            }
+            else if (dock.getChargingFee() == docks.get(i).getChargingFee()){
+                if (dock.getIdDock().compareTo(docks.get(i).getIdDock()) < 0){
+                    docks.add(i,dock);
+                    return;
+                }
+            }
+            }        
+        }
+    docks.add(dock);
     }
+
     
-    /**
-     * Set the current location of the charging station.
-     * @param location Where it is. Must not be null.
-     * @throws NullPointerException If location is null.
-     */
-    public void setLocation(Location location)
-    {
-       this.location = location;   
-    }
+    
 
     //TODO complete the rest of the code
 

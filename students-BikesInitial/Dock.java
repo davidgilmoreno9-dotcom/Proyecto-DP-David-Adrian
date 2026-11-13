@@ -88,6 +88,13 @@ public class Dock
     public int getNumerEVRecharged(){
         return bikesRecharged.size();
     }
+    
+    /**
+     * @return the amount collected of this dock.
+     */
+    public boolean getDockFree(){
+        return free;
+    }
 
     /**
      * Simulates the charging process for an {@link ElectricBike}.
