@@ -1,13 +1,29 @@
 #BlueJ class context
-#Mon Nov 09 21:52:37 CET 2026
+#Fri Nov 13 16:15:06 CET 2026
 comment0.target=EBCompanyTest
-comment0.text=\r\n The test class EBCompanyTest.\r\n\r\n @author  (your name)\r\n @version (a version number or a date)\r\n
+comment0.text=\r\n The test class EBCompanyTest.\r\n\r\n @author  David\r\n @version 13/11/2026\r\n
 comment1.target=EBCompanyTest()
 comment1.text=\r\n Default constructor for test class EBCompanyTest\r\n
+comment10.target=void testNumberOfStations()
+comment10.text=\r\n Comprueba que devuelve bien el numero de estaciones\r\n
+comment11.target=void testNumberOfBikes()
+comment11.text=\r\n Comprueba que devuelve bien el numero de bicis\r\n
+comment12.target=void testReset()
+comment12.text=\r\n Comprueba que resetea bien las estaciones y bicis\r\n
 comment2.target=void setUp()
 comment2.text=\r\n Sets up the test fixture.\r\n\r\n Called before every test case method.\r\n
 comment3.target=void tearDown()
 comment3.text=\r\n Tears down the test fixture.\r\n\r\n Called after every test case method.\r\n
 comment4.target=void testConstructor()
+comment4.text=\r\n Comprueba que el constructor funcione correctamente\r\n
 comment5.target=void testAddBikes()
-numComments=6
+comment5.text=\r\n Comprueba que las bicis se a\u00F1aden correctamente\r\n
+comment6.target=void testAddStations()
+comment6.text=\r\n Comprueba que las estaciones se a\u00F1aden correctamente\r\n
+comment7.target=void testGetStations()
+comment7.text=\r\n Comprueba que busca bien una estaci\u00F3n por su id\r\n
+comment8.target=void testGetBestStation()
+comment8.text=\r\n Comprueba que busca bien la mejor estaci\u00F3n de uuna bici seg\u00FAn cuanta bateria tenga\r\n
+comment9.target=void testGetStationsL()
+comment9.text=\r\n Comprueba que busca bien una estacion por su localicaci\u00F3n\r\n
+numComments=13
