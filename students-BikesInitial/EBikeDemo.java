@@ -48,8 +48,10 @@ public class EBikeDemo
      */
     public EBikeDemo()
     {
-        //TODO: Complete this code
-
+        company = new EBCompany("EBBike Cáceres");
+        bikes = new ArrayList<>();
+        stations = new ArrayList<>();
+        reset();
     }
 
     /**
@@ -84,12 +86,13 @@ public class EBikeDemo
     {
         bikes.clear();
         stations.clear();
-        // TODO: Complete the code here: reset the company info
+        company.reset();
         createElectricBikes();
         createStations(); 
         createDocks();
         configureRoutes();
-        // TODO: Complete the code here: show the initial info
+        showInitialInfo();
+        run();
     }
 
     
@@ -105,11 +108,16 @@ public class EBikeDemo
                                         new Location(1,10), new Location(5,5), new Location(8,7), new Location(19,19)};
                                         
         //createLocations(locations,targetLocations);
-        for (int i=0;i < DEMO.getNumBikesToCreate();i++){
-            ElectricBike eb = new ElectricBike(company, locations[i],targetLocations[i],("EBCC"+i),(i+1)*15);
-            // TODO: Complete the code here
+        for (int i = 0; i < DEMO.getNumBikesToCreate(); i++) {
+        ElectricBike eb = new ElectricBike(company, locations[i], targetLocations[i], ("EBCC" + i), (i + 1) * 15);
+        company.addElectricBike(eb);
+        int pos = 0;
+        while (pos < bikes.size()&& bikes.get(pos).getIdBike().compareTo(eb.getIdBike()) <= 0) {
+            pos++;
         }
-        // TODO: Complete the code here
+        bikes.add(pos, eb);
+        }
+        
 
     }
     
@@ -121,11 +129,16 @@ public class EBikeDemo
     private void createStations() {  
         Location [] locations = {new Location(10,5), new Location(10,11), new Location(14,16), new Location(8,4)};
                                 
-        for (int i=0;i<DEMO.getNumStationsToCreate();i++){
-            company.addBikeStation(new BikeStation("CC0" + i,locations[i]));
-        }
-        
-        // TODO: Complete the code here
+        for (int i = 0; i < DEMO.getNumStationsToCreate(); i++) {
+    BikeStation station = new BikeStation("CC0" + i, locations[i]);
+    company.addBikeStation(station);
+    int pos = 0;
+    while (pos < stations.size()
+           && stations.get(pos).getId().compareTo(station.getId()) <= 0) {
+        pos++;
+    }
+    stations.add(pos, station);
+    }
     }
 
     /**
