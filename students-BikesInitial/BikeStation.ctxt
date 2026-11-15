@@ -1,9 +1,9 @@
 #BlueJ class context
-#Sun Nov 15 05:06:42 CET 2026
+#Sun Nov 15 22:59:05 CET 2026
 comment0.target=BikeStation
 comment0.text=\r\n Models an Electric Vehicle Charging Station.\r\n A charging station contains multiple {@link Dock} units.\r\n @author DP classes \r\n @version 2026.10.13\r\n
 comment1.target=BikeStation()
-comment1.text=\r\n Constructor for objects of class BikeStation.\r\n //TODO complete the JavaDoc comments\r\n
+comment1.text=\r\n Constructor for objects of class BikeStation.\r\n
 comment10.params=id
 comment10.target=Dock getDock(java.lang.String)
 comment10.text=\r\n @return el dock con el id que hemos establecido.\r\n
@@ -14,7 +14,7 @@ comment12.target=java.lang.String toString()
 comment12.text=\r\n Returns a detailed string representation of the bike station.\r\n @return The bike station's state as \r\n {@code (BikeStation\: <id>, <numberOfBikesRecharged>, <location>)}.\r\n
 comment2.params=id location
 comment2.target=BikeStation(java.lang.String, Location)
-comment2.text=\r\n Constructor for objects of class BikeStation.\r\n //TODO complete the JavaDoc comments\r\n
+comment2.text=\r\n Constructor for objects of class BikeStation.\r\n @param id El ID de la estacion\r\n @param location La localizacion de la estacion\r\n
 comment3.target=Dock getFreeDock()
 comment3.text=\r\n Retrieves the first free {@link Dock} found at the station.\r\n @return A free {@link Dock}, or possibly throws an exception if none are found (depending on stream implementation details).\r\n **Note\: The implementation assumes at least one free dock exists if called.**\r\n
 comment4.target=int getNumberOfDocks()

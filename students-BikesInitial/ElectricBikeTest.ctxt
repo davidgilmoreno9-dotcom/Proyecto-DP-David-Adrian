@@ -1,0 +1,33 @@
+#BlueJ class context
+#Sun Nov 15 22:56:12 CET 2026
+comment0.target=ElectricBikeTest
+comment0.text=\r\n The test class ElectricBikeTest.\r\n\r\n @author  (your name)\r\n @version (a version number or a date)\r\n
+comment1.target=ElectricBikeTest()
+comment1.text=\r\n Default constructor for test class ElectricBikeTest\r\n
+comment10.target=void testDistanceToTheTargetLocation()
+comment10.text=\r\n Comprueba que se calcula la distancia hasta el destino\r\n
+comment11.target=void tesRecharge()
+comment11.text=\r\n Comprueba que se encuentra el dock que cargara la bici\r\n
+comment12.target=void testReduceBatteryLevel()
+comment12.text=\r\n Comprueba que la betria se baja bien\r\n
+comment13.target=void testStep()
+comment13.text=\r\n Comprueba que se da el paso bien\r\n
+comment14.target=void testToString()
+comment14.text=\r\n Comprueba que los datos de la bici se dan por pantalla correctamente\r\n
+comment2.target=void setUp()
+comment2.text=\r\n Sets up the test fixture.\r\n\r\n Called before every test case method.\r\n
+comment3.target=void tearDown()
+comment3.text=\r\n Tears down the test fixture.\r\n\r\n Called after every test case method.\r\n
+comment4.target=void testCreateBikes()
+comment4.text=\r\n Comprueba que las bicis se a\u00F1aden correctamente\r\n
+comment5.target=void testSetLocation()
+comment5.text=\r\n Comprueba que se establece la location\r\n
+comment6.target=void testSetTargetLocation()
+comment6.text=\r\n Comprueba que se establece la localizacion de destino bien\r\n
+comment7.target=void testCalculeRoute()
+comment7.text=\r\n Comprueba que se calcula la ruta bien\r\n
+comment8.target=void testStringRoute()
+comment8.text=\r\n Comprueba el mensaje de el paso se hace correctamente\r\n
+comment9.target=void testEnoughBattery()
+comment9.text=\r\n Comprueba que se comprueba si la bici tiene bateria\r\n
+numComments=15

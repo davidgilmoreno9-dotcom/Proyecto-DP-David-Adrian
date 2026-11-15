@@ -100,6 +100,14 @@ public class Dock
         return bikesRecharged.size();
     }
     
+    
+    /**
+     * @return The total number of money collected by this dock.
+     */
+    public float getAmountCollected(){
+        return amountCollected;
+    }
+    
     /**
      * @return The list of recharged bikes.
      */

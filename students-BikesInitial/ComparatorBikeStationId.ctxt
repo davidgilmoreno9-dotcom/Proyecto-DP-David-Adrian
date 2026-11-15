@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sun Nov 15 05:06:42 CET 2026
+#Sun Nov 15 22:56:12 CET 2026
 comment0.target=ComparatorBikeStationId
 comment0.text=\r\n Compares two {@link BikeStation} objects based on their ID in ascending order.\r\n This can be used for sorting lists of Bike stations.\r\n @author DP Clasess\r\n @version 2026.10.13\r\n
 comment1.params=st1 st2

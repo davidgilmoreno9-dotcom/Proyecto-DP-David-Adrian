@@ -63,6 +63,27 @@ public class ElectricBike
     }
     
     /**
+     * @return El total de ws que se han cargado en la bici.
+     */
+    public int getBatteryLevel(){
+        return batteryLevel;
+    }
+    
+    /**
+     * @return El total de ws que se han cargado en la bici.
+     */
+    public int getWsCharged(){
+        return wsCharged;
+    }
+    
+     /**
+     * @return El total de veces que se ha cargado la bici.
+     */
+    public int getChargesCount(){
+        return chargesCount;
+    }
+    
+    /**
      * @return The docks visited by the bike.
      */
     public ArrayList<Dock> getDocks(){
@@ -306,7 +327,5 @@ public class ElectricBike
         
         return result + ", " + targetLocation + ")";
 
-    }
-
-   
+        }
 }

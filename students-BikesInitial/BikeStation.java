@@ -17,7 +17,6 @@ public class BikeStation
     
     /**
      * Constructor for objects of class BikeStation.
-     * //TODO complete the JavaDoc comments
      */
     public BikeStation(  )
     {
@@ -28,7 +27,8 @@ public class BikeStation
 
     /**
      * Constructor for objects of class BikeStation.
-     * //TODO complete the JavaDoc comments
+     * @param id El ID de la estacion
+     * @param location La localizacion de la estacion
      */
     public BikeStation(String id, Location location)
     {

@@ -1,0 +1,23 @@
+#BlueJ class context
+#Sun Nov 15 22:56:07 CET 2026
+comment0.target=DockTest
+comment0.text=\r\n The test class DockTest.\r\n\r\n @author  (your name)\r\n @version (a version number or a date)\r\n
+comment1.target=DockTest()
+comment1.text=\r\n Default constructor for test class DockTest\r\n
+comment2.target=void setUp()
+comment2.text=\r\n Sets up the test fixture.\r\n\r\n Called before every test case method.\r\n
+comment3.target=void tearDown()
+comment3.text=\r\n Tears down the test fixture.\r\n\r\n Called after every test case method.\r\n
+comment4.target=void testCreateDock()
+comment4.text=\r\n Comprueba que los docks se crean correctamente\r\n
+comment5.target=void testAddBike()
+comment5.text=\r\n Comprueba que las bicis se a\u00F1aden correctamente\r\n
+comment6.target=void testOcupedDock()
+comment6.text=\r\n Comprueba que se cambia a ocupado bien\r\n
+comment7.target=void testSetAmountCollected()
+comment7.text=\r\n Comprueba que se establece el total recolectado\r\n
+comment8.target=void testToString()
+comment8.text=\r\n Comprueba que se muestra por pantalla el dock bien\r\n
+comment9.target=void testRecharge()
+comment9.text=\r\n Comprueba que la funcion charge va bien\r\n
+numComments=10
