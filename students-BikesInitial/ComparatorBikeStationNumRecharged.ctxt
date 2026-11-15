@@ -1,0 +1,8 @@
+#BlueJ class context
+#Sun Nov 15 05:06:42 CET 2026
+comment0.target=ComparatorBikeStationNumRecharged
+comment0.text=\r\n Compares two {@link BikeStation} objects based on the number of bikes\r\n recharged in their docks, in descending order.\r\n Ties are broken by their ID in ascending order.\r\n This can be used for sorting lists of bike stations in the final report.\r\n @author Adrian Serrat Leal\r\n @version 2026.11.15\r\n
+comment1.params=st1 st2
+comment1.target=int compare(BikeStation, BikeStation)
+comment1.text=\r\n Compares its two {@link BikeStation} arguments for order.\r\n The comparison is based on the number of bikes recharged in the\r\n station (descending). If both have the same number, the comparison\r\n is based on the lexicographical order of their IDs (ascending).\r\n @param st1 The first bike station to be compared.\r\n @param st2 The second bike station to be compared.\r\n @return A negative integer, zero, or a positive integer as the first\r\n station has recharged more, the same, or fewer bikes than the second.\r\n
+numComments=2

@@ -12,7 +12,8 @@ public class EBCompany
     private String name;
     private ArrayList<ElectricBike> subscribed_bikes;
     private ArrayList<BikeStation> stations;
-
+    public static final int MOVINGCOST = 5; 
+    
     /**
      * Constructor for objects of class EVCompany.
      * @param name The name of the company.
@@ -74,13 +75,12 @@ public class EBCompany
      *          or {@code null} if np station is reachable with the bike's
      *         current battery level (or if {@link #stations} is empty)
      */
-    public BikeStation findBestStation(ElectricBike EV)
-    {
+    public BikeStation findBestStation(ElectricBike ev){
         return stations.stream()
-                .filter(station -> EV.enoughBattery(station.getLocation()))
-                .filter(station -> !EV.getVisitedStations().contains(station))
-                .min(Comparator.comparingInt(station -> EV.getLocation().distance(station.getLocation())
-            + station.getLocation().distance(EV.getTargetLocation())))
+                .filter(station -> ev.enoughBattery(station.getLocation()))
+                .filter(station -> !ev.getLocation().equals(station.getLocation()))
+                .min(Comparator.comparingInt(station -> ev.getLocation().distance(station.getLocation())
+            + station.getLocation().distance(ev.getTargetLocation())))
                 .orElse(null);
     }
     
@@ -89,8 +89,7 @@ public class EBCompany
      * @param location The {@link Location} of the station to find.
      * @return The {@link BikeStation} at the matching location, or {@code null} if not found.
      */
-    public BikeStation getBikeStation(Location location)
-    {
+    public BikeStation getBikeStation(Location location){
         for (int i = 0; i < stations.size();i++){
             if(stations.get(i).getLocation().equals(location)){
                 return stations.get(i);

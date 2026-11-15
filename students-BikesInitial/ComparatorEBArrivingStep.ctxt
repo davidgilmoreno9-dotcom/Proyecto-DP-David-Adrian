@@ -1,0 +1,8 @@
+#BlueJ class context
+#Sun Nov 15 05:06:42 CET 2026
+comment0.target=ComparatorEBArrivingStep
+comment0.text=\r\n Compares two {@link ElectricBike} objects based on the step in which they\r\n reached their target destination, in ascending order.\r\n Bikes that have not arrived yet ({@code arrivalStep \=\= -1}) are considered\r\n to arrive last. Ties are broken by their ID in ascending order.\r\n @author Adrian Serrat Leal\r\n @version 2026.11.15\r\n
+comment1.params=eb1 eb2
+comment1.target=int compare(ElectricBike, ElectricBike)
+comment1.text=\r\n Compares its two {@link ElectricBike} arguments for order.\r\n The comparison is based on the arrival step; bikes that have not\r\n arrived are placed after those that have. If both have the same\r\n arrival step, the comparison is based on the lexicographical order\r\n of their IDs.\r\n @param eb1 The first electric bike to be compared.\r\n @param eb2 The second electric bike to be compared.\r\n @return A negative integer, zero, or a positive integer as the first\r\n bike arrived earlier than, at the same step as, or later than the second.\r\n
+numComments=2

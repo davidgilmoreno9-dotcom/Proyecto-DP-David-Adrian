@@ -1,5 +1,4 @@
 import java.util.*; 
-import java.util.*; 
 
 /**
  * Compares two {@link BikeStation} objects based on their ID in ascending order.
@@ -17,7 +16,8 @@ public class ComparatorBikeStationId implements Comparator<BikeStation>
      * @return A negative integer, zero, or a positive integer as the first
      * station's ID is less than, equal to, or greater than the second.
      */
-    public int compare(BikeStation st1, BikeStation st2){  
+    public int compare(BikeStation st1, BikeStation st2)
+    {  
         return st1.getId().compareTo(st2.getId());
     } 
 }

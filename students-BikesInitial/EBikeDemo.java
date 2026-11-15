@@ -38,7 +38,7 @@ public class EBikeDemo
     private List<BikeStation> stations;
     
     /** Constant for selecting the demo scenario, using the {@link DemoType} enumeration. */
-    private static final DemoType DEMO=DemoType.SIMPLE;
+    private static final DemoType DEMO=DemoType.ADVANCED;
     
         
     /**
@@ -58,14 +58,12 @@ public class EBikeDemo
      * Run the demo for a fixed number of steps (50 steps).
      * In each step, all bikes perform their action.
      */
-    public void run()
-    {        
-        //Ejecutamos un número de pasos la simulación.
-        //En cada paso, cada persona de reparto realiza su acción
-        for(int step = 0; step < MAXSTEPS; step++) {
+    public void run() 
+    {
+        for (int step = 0; step < MAXSTEPS; step++) {
             step(step);
         }
-        //TODO: Complete this code (show the final info)
+        showFinalInfo();
     }
 
     /**
@@ -74,7 +72,11 @@ public class EBikeDemo
      */
     public void step(int step)
     {
-        //TODO: Complete this code: for each bike, act
+        Iterator<ElectricBike> it = bikes.iterator();
+        while (it.hasNext()) {
+            ElectricBike ev = it.next();
+            ev.act(step);
+        }
     }
 
     /**
@@ -82,17 +84,16 @@ public class EBikeDemo
      * Clears existing bikes and stations, resets the company, and re-creates
      * the initial setup.
      */
-    public void reset()
+    public void reset() 
     {
         bikes.clear();
         stations.clear();
         company.reset();
         createElectricBikes();
-        createStations(); 
+        createStations();
         createDocks();
         configureRoutes();
         showInitialInfo();
-        run();
     }
 
     
@@ -109,14 +110,12 @@ public class EBikeDemo
                                         
         //createLocations(locations,targetLocations);
         for (int i = 0; i < DEMO.getNumBikesToCreate(); i++) {
-        ElectricBike eb = new ElectricBike(company, locations[i], targetLocations[i], ("EBCC" + i), (i + 1) * 15);
-        company.addElectricBike(eb);
-        int pos = 0;
-        while (pos < bikes.size()&& bikes.get(pos).getIdBike().compareTo(eb.getIdBike()) <= 0) {
-            pos++;
+            ElectricBike ev = new ElectricBike(company, locations[i], targetLocations[i],
+                                               "EBCC" + i, (i + 1) * 15);
+            company.addElectricBike(ev);   
+            bikes.add(ev);                 
         }
-        bikes.add(pos, eb);
-        }
+        bikes.sort(new ComparatorEBIdBike());
         
 
     }
@@ -128,17 +127,14 @@ public class EBikeDemo
      */
     private void createStations() {  
         Location [] locations = {new Location(10,5), new Location(10,11), new Location(14,16), new Location(8,4)};
-                                
-        for (int i = 0; i < DEMO.getNumStationsToCreate(); i++) {
-    BikeStation station = new BikeStation("CC0" + i, locations[i]);
-    company.addBikeStation(station);
-    int pos = 0;
-    while (pos < stations.size()
-           && stations.get(pos).getId().compareTo(station.getId()) <= 0) {
-        pos++;
-    }
-    stations.add(pos, station);
-    }
+    
+        for (int i=0;i<DEMO.getNumStationsToCreate();i++){
+            BikeStation st = new BikeStation("CC0" + i, locations[i]);
+            company.addBikeStation(st);
+            stations.add(st);
+        }
+        
+        stations.sort(new ComparatorBikeStationId());
     }
 
     /**
@@ -146,14 +142,12 @@ public class EBikeDemo
      * and orders the Docks within each station.
      */
     private void createDocks() {  
-        // TODO: Complete the code here
         for (BikeStation station : stations){
             for (int i=0;i<DEMO.getNumDocksToCreate();i++){
                 // Creates Docks with varying speed and fee based on index 'i'.
                 Dock d = new Dock(station.getId() + "_00" + i,((i+1)*20),((i+1)*0.20f));
                 station.addDock(new Dock(station.getId() + "_00" + i,((i+1)*20),((i+1)*0.20f)));
             }
-            // TODO: Complete the code here
         }    
     }
     
@@ -162,28 +156,38 @@ public class EBikeDemo
       * Instructs each {@link ElectricBike} to calculate its initial route.
       * This determines if an intermediate recharging stop is necessary.
       */
-     private void configureRoutes() {
-        // TODO: Complete the code here
-
-     }
+    private void configureRoutes() {
+        Iterator<ElectricBike> it = bikes.iterator();
+        while (it.hasNext()) {
+            it.next().calculateRoute();
+        }
+    }
 
     /**
      * Displays the initial information for the simulation, including 
      * the details of all {@link ElectricBike}s and {@link BikeStation}s.
      */
     private void showInitialInfo() {
+        System.out.println("( Compañía " + company.getName() + " )");
         System.out.println("(-------------------)");
         System.out.println("( Electric Bikes )");
         System.out.println("(-------------------)");
-
-        // TODO: Complete the code here
-
+    
+        for (ElectricBike ev : bikes) {
+            System.out.println(ev.toString()); 
+        }
+    
         System.out.println("(-------------------)");
         System.out.println("( Bike Stations )");
         System.out.println("(-------------------)");
-       
-        // TODO: Complete the code here
-
+    
+        for (BikeStation st : stations) {
+            System.out.println(st.toString());          
+            for (Dock d : st.getDocks()) {               
+                System.out.println(d.toString());       
+            }
+        }
+    
         System.out.println("(------------------)");
         System.out.println("( Simulation start )");
         System.out.println("(------------------)");
@@ -204,13 +208,32 @@ public class EBikeDemo
         System.out.println("( Electric Bikes )");
         System.out.println("(-------------------)");
         
-        // TODO: Complete the code here
+        List<ElectricBike> bikesSorted = new ArrayList<>(bikes);
+        bikesSorted.sort(new ComparatorEBArrivingStep());
+
+        for (ElectricBike ev : bikesSorted) {
+            System.out.println(ev.toString());
+            for (Dock d : ev.getDocks()) {
+                System.out.println("(Dock: " + d.getIdDock() + ")");
+            }
+        }
         
         System.out.println("(-------------------)");
         System.out.println("( Bike Stations )");
         System.out.println("(-------------------)");
         
-        // TODO: Complete the code here
+        List<BikeStation> stationsSorted = new ArrayList<>(stations);
+        stationsSorted.sort(new ComparatorBikeStationNumRecharged());
+        
+        for (BikeStation st : stationsSorted) {
+            System.out.println(st.toString());
+            for (Dock d : st.getDocks()) {
+                System.out.println(d.toString());
+                for (ElectricBike ev : d.getBikesRecharged()) {
+                    System.out.println(ev.toString());
+                }
+            }
+        }
     }
     
     

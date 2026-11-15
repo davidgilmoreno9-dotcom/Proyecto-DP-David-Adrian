@@ -1,5 +1,5 @@
 #BlueJ class context
-#Fri Nov 13 17:08:28 CET 2026
+#Sun Nov 15 05:06:42 CET 2026
 comment0.target=EBCompany
 comment0.text=\r\n Models the operation of an Electric Bike (EB) Company. \r\n It manages a fleet of {@link ElectricBike}s and a network of {@link BikeStation}s.\r\n * @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes\r\n @version 2026.10.13\r\n
 comment1.params=name
@@ -18,7 +18,7 @@ comment4.text=\r\n Adds a {@link BikeStation} to the company's network.\r\n @par
 comment5.params=id
 comment5.target=BikeStation getBikeStation(java.lang.String)
 comment5.text=\r\n Retrieves a {@link BikeStation} by its unique ID.\r\n @param id The ID of the station to find.\r\n @return The {@link BikeStation} with the matching ID, or {@code null} if not found.\r\n
-comment6.params=EV
+comment6.params=ev
 comment6.target=BikeStation findBestStation(ElectricBike)
 comment6.text=\r\n Finds the closest {@link BikeStation} to the given origin that the specified\r\n {@link ElectricBike} can reach with its current battery level.\r\n @param EV The electric bike whose current location is the route's origin\r\n           and whose battery level determines which stations are reachable\r\n @return The reachable {@link BikeStation} with the shortest adjusted route to targetLocation  ,\r\n          or {@code null} if np station is reachable with the bike's\r\n         current battery level (or if {@link \#stations} is empty)\r\n
 comment7.params=location

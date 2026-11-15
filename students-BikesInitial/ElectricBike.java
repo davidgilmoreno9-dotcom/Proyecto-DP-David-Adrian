@@ -24,7 +24,7 @@ public class ElectricBike
     private int chargesCount;
     private float chargesCost;
     private ArrayList<Dock> docks;
-    private HashSet<BikeStation> visitedStations; //To elude recharging non-stop on the same station
+    private int arrivalStep = -1;
     
     /**
      * Constructor of class ElectricBike.
@@ -46,21 +46,33 @@ public class ElectricBike
            this.targetLocation = targetLocation;
            this.rechargingLocation = null;
            this.batteryCapacity = batteryCapacity;
-           
+           this.arrivalStep = -1;
            this.idleCount = 0;
            this.batteryLevel = batteryCapacity;
            this.wsCharged = 0;
            this.chargesCount = 0;
            this.chargesCost = 0;
            this.docks = new ArrayList<>();
-           this.visitedStations = new HashSet<>();
     }
-
+   
+    /**
+     * @return The arrivalStep of the electric bike.
+     */
+    public int getArrivalStep(){
+        return arrivalStep;
+    }
+    
+    /**
+     * @return The docks visited by the bike.
+     */
+    public ArrayList<Dock> getDocks(){
+        return docks;
+    }
+    
     /**
      * @return The id of the electric bike.
      */
-    public String getIdBike()
-    {
+    public String getIdBike(){
         return idBike;    
     }
 
@@ -68,8 +80,7 @@ public class ElectricBike
      * Get the the bikes location.
      * @return Where this bike is located.
      */
-    public Location getLocation()
-    {
+    public Location getLocation(){
         return location;  
     }
     
@@ -77,8 +88,7 @@ public class ElectricBike
      * Get the final target location.
      * @return Where this bike is ultimately headed.
      */
-    public Location getTargetLocation()
-    {
+    public Location getTargetLocation(){
         return targetLocation;  
     }
 
@@ -86,32 +96,22 @@ public class ElectricBike
      * Get the temporary recharging location.
      * @return The {@link Location} of the next {@link BikeStation} to visit, or null if no recharge is planned.
      */
-    public Location getRechargingLocation()
-    {
+    public Location getRechargingLocation(){
         return rechargingLocation;
     }
     
-    /**
-     * Returns The set of stations this bike has already visited.
-     *
-     * @return The visited stations
-     */
-    public HashSet<BikeStation> getVisitedStations()
-    {
-        return visitedStations;
-    }   
 
     /**
      * Set the current location.
      * @param location Where it is. Must not be null.
      * @throws NullPointerException If location is null.
      */
-    public void setLocation(Location location)
-    {
+    public void setLocation(Location location){
         if (location == null){
             throw new NullPointerException("New location cannot be null");
         }
         this.location = location;
+        calculateRoute();
     }
 
     
@@ -120,12 +120,13 @@ public class ElectricBike
      * @param location Where to go. Must not be null.
      * @throws NullPointerException If location is null.
      */
-    public void setTargetLocation(Location location)
-    {
+    public void setTargetLocation(Location location){
         if (location == null){
             throw new NullPointerException("The new targetLocation can not be null");
         }
         targetLocation = location;
+        arrivalStep = -1;
+        calculateRoute();
     }
 
     /**
@@ -134,24 +135,20 @@ public class ElectricBike
      * If there isn't enough battery to reach the target, it attempts to find an intermediate 
      * {@link BikeStation} and sets it as the {@code rechargingLocation}.
      */
-    public void calculateRoute()
-    {
-    if (!enoughBattery(targetLocation)){
-        BikeStation closest = company.findBestStation(this);
-        if (closest != null) {
-            rechargingLocation = closest.getLocation();
-        } else {
+    public void calculateRoute(){
+        if (enoughBattery(targetLocation)) {
             rechargingLocation = null;
+        } else {
+            BikeStation best = company.findBestStation(this);
+            rechargingLocation = (best != null) ? best.getLocation() : null;
         }
-    }
     }
 
     /**
      * Gets a string representation of the planned route, including the recharging stop if one exists.
      * @return A string showing the route: {@code currentLocation -> [rechargingLocation ->] targetLocation}.
      */
-    public String getStringRoute()
-    {
+    public String getStringRoute(){
         if (rechargingLocation == null){
             return location.toString() + "->" + targetLocation.toString();
         }
@@ -160,13 +157,13 @@ public class ElectricBike
 
     /**
      * Checks whether the current battery level is sufficient to reach a given {@link Location}.
-     * The bike consumes 5ws per step so it could travel up to {@code batteryLevel / 5} steps.
+     * The bike consumes {@code EBCompany.MOVINGCOST}ws per step so it could travel up to {@code batteryLevel / EBCompany.MOVINGCOST} steps.
      * @param endLocation, The {@link Location} checked as destiny.
      * @return {@code true} if the destiny is reachable and {@code false} otherwise.
      */
     public boolean enoughBattery(Location endLocation)
     {
-        return (batteryLevel / 5 >= this.location.distance(endLocation));
+        return (batteryLevel / EBCompany.MOVINGCOST >= this.location.distance(endLocation));
     }
 
     /**
@@ -190,21 +187,20 @@ public class ElectricBike
      * <p>  On a successful recharge, {@code wsCharged}, {@code idleCount},
      *      {@code chargesCount} and {@code chargesCost} are updated accordingly.</p>
      */
-    public Dock recharge()
-    {
+    public Dock recharge(){
         BikeStation station = company.getBikeStation(rechargingLocation);
         Dock currentDock = station.getFreeDock();
         if (currentDock == null){
             return null;
         }
         this.docks.add(currentDock);
-        visitedStations.add(station);
         int charge = batteryCapacity - batteryLevel;
         float cost = currentDock.recharge(charge, this);
         this.wsCharged += charge;
         this.batteryLevel = batteryCapacity;
         this.chargesCount++;
         this.chargesCost += cost;
+        calculateRoute();
         return currentDock;
     } 
 
@@ -212,7 +208,7 @@ public class ElectricBike
      * Reduces the battery level by the cost of one movement step (defined in {@link EBCompany#MOVINGCOST}).
      */
     public void reduceBatteryLevel(){
-        this.batteryLevel -= 5;   
+        this.batteryLevel -= EBCompany.MOVINGCOST;   
     }
 
     /**
@@ -225,25 +221,25 @@ public class ElectricBike
      *
      * @param step The current step of the simulation.
      */
-    public void act(int step )
-    {
-        
-        
-        calculateRoute();
+    public void act(int step ){
+        boolean stayIdle = false;
         if (rechargingLocation == null){
             if (location.isAdjacent(targetLocation) && enoughBattery(targetLocation)){
                 System.out.println("(step: " + step + " - ElectricBike: " + idBike + " at target destination ********)");
+                arrivalStep = step;
             }
             if (location.equals(targetLocation) || !enoughBattery(targetLocation)){
-                //This is only for the case the bike is created or gets assigned on its own location as destination
-                if (location.equals(targetLocation) && idleCount == 0) {
+                //This is only for the case the bike is created or gets assigned on its own location as destination.
+                if (location.equals(targetLocation) && arrivalStep == -1) {
                     System.out.println("(step: " + step + " - ElectricBike: " + idBike + " at target destination ********)");
+                    arrivalStep = step;
                 }
-                idleCount++;
+                stayIdle = true;
             }
             else { 
                 location = location.nextLocation(targetLocation);
                 reduceBatteryLevel();
+                idleCount = 0;
             }
             
         }
@@ -254,44 +250,62 @@ public class ElectricBike
                         location = location.nextLocation(rechargingLocation);
                         reduceBatteryLevel();
                     }
-                    idleCount++;
+                    stayIdle = true;
                     int charge = batteryCapacity - batteryLevel;
                     Dock currentDock = recharge();
                     if (currentDock != null){
                         float cost = charge * currentDock.getChargingFee();
-                        System.out.printf("(step: %d - ElectricBike: %s recharges: %dwh at dock: %s with cost: %.1f€ ********)%n",
+                        System.out.printf(java.util.Locale.US, "(step: %d - ElectricBike: %s recharges: %dwh at dock: %s with cost: %.1f€ ********)%n",
                                             step, idBike, charge, currentDock.getIdDock(), cost);
                     }
                 }
-                else { 
+                else {
                     location = location.nextLocation(rechargingLocation);
                     reduceBatteryLevel();
+                    idleCount = 0;
                 }
             }
             else{
-                idleCount++;
+                stayIdle = true;
             }
         }
         if (rechargingLocation == null){
-            System.out.printf("(step: %d - ElectricBike: %s, %dwh, %dwh, %d, %.1f€, %d, %s, %s)%n", step, 
+            System.out.printf(java.util.Locale.US, "(step: %d - ElectricBike: %s, %dwh, %dwh, %d, %.1f€, %d, %s, %s)%n", step, 
                                 idBike, batteryCapacity, batteryLevel, chargesCount, chargesCost, idleCount,
                                 location, targetLocation);
         }
         else{
-            System.out.printf("(step: %d - ElectricBike: %s, %dwh, %dwh, %d, %.1f€, %d, %s, %s, %s)%n", step, 
+            System.out.printf(java.util.Locale.US, "(step: %d - ElectricBike: %s, %dwh, %dwh, %d, %.1f€, %d, %s, %s, %s)%n", step, 
                                 idBike, batteryCapacity, batteryLevel, chargesCount, chargesCost, idleCount,
                                 location, rechargingLocation, targetLocation);
+        }
+        if (stayIdle) {
+            idleCount++;
         }
     }
 
     
     /**
      * Returns a detailed string representation of the electric bike.
-     * @return A string containing the bike's id, company, battery info, charge counts, costs, idle count, and route.
+     * @return The bike's state as 
+     * {@code (ElectricBike: <id>, <cap>wh, <level>wh, <charges>, <cost>€, <idle>, <loc>[, <rechargeLoc>], <target>)}.
      */
     @Override
     public String toString(){
-        return idBike + " " + company.getName() + " " + chargesCount + " " + chargesCost + " " + idleCount + " " + getStringRoute();
+        String result = "(ElectricBike: " + idBike 
+                      + ", " + batteryCapacity + "wh"
+                      + ", " + batteryLevel + "wh"
+                      + ", " + chargesCount
+                      + ", " + String.format(java.util.Locale.US, "%.1f", chargesCost) + "€" //To express as 0.0€
+                      + ", " + idleCount
+                      + ", " + location;
+        
+        if (rechargingLocation != null) {
+            result = result + ", " + rechargingLocation;
+        }
+        
+        return result + ", " + targetLocation + ")";
+
     }
 
    

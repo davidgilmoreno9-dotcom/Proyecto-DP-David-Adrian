@@ -60,6 +60,19 @@ public class BikeStation
     }
     
     /**
+     * Returns the number of bikes that have been recharged in any dock of this station.
+     * A bike that recharges more than once in the same station is counted each time.
+     * @return The total number of recharges performed in this station's docks.
+     */
+    public int getNumBikesRecharged()
+    {
+        int total = 0;
+        for (Dock d : docks) {
+            total += d.getNumberEVRecharged();
+        }
+        return total;
+    }
+    /**
      * Set the current location of the charging station.
      * @param location Where it is. Must not be null.
      * @throws NullPointerException If location is null.
@@ -113,27 +126,36 @@ public class BikeStation
      */
     public void addDock(Dock dock)
     {
-    for(int i = 0; i < docks.size(); i++) {
-        if (dock.getChargingSpeed() > docks.get(i).getChargingSpeed()){
-            docks.add(i, dock);
-            return;
-        }
-        else if (dock.getChargingSpeed() == docks.get(i).getChargingSpeed()){
-            if (dock.getChargingFee() < docks.get(i).getChargingFee()){
+        for(int i = 0; i < docks.size(); i++) {
+            if (dock.getChargingSpeed() > docks.get(i).getChargingSpeed()){
                 docks.add(i, dock);
                 return;
             }
-            else if (dock.getChargingFee() == docks.get(i).getChargingFee()){
-                if (dock.getIdDock().compareTo(docks.get(i).getIdDock()) < 0){
-                    docks.add(i,dock);
+            else if (dock.getChargingSpeed() == docks.get(i).getChargingSpeed()){
+                if (dock.getChargingFee() < docks.get(i).getChargingFee()){
+                    docks.add(i, dock);
                     return;
                 }
+                else if (dock.getChargingFee() == docks.get(i).getChargingFee()){
+                    if (dock.getIdDock().compareTo(docks.get(i).getIdDock()) < 0){
+                        docks.add(i,dock);
+                        return;
+                    }
+                }
+                }        
             }
-            }        
-        }
-    docks.add(dock);
+        docks.add(dock);
     }
-
+    
+    /**
+     * Returns a detailed string representation of the bike station.
+     * @return The bike station's state as 
+     * {@code (BikeStation: <id>, <numberOfBikesRecharged>, <location>)}.
+     */
+    @Override
+    public String toString() {
+        return "(BikeStation: " + idStation + ", " + getNumBikesRecharged() + ", " + location + ")";
+    }
     
     
 

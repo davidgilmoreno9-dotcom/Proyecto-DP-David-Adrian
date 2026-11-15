@@ -5,7 +5,8 @@ import java.util.List;
  * It tracks its charging capabilities, fee, and the electric bikes it has recharged.
  * @author David J. Barnes and Michael Kölling
  * @author DP classes 
- * @version 2026.10.13
+ * @author Adrián Serrat Leal
+ * @version 2026.11.15
  */
 public class Dock
 {
@@ -36,9 +37,8 @@ public class Dock
      * Add an {@link ElectricBike} to the bikesRecharged list.
      * @param  EV. An {@link ElectricBike} to add.
      */
-    public void addBike(ElectricBike EV)
-    {
-        bikesRecharged.add(EV);
+    public void addBike(ElectricBike ev){
+        bikesRecharged.add(ev);
     }
     
     /**
@@ -56,13 +56,18 @@ public class Dock
     public void setOcupedDock(){
         free = false;
     }
+    
+    
     /**
      * Returns a string representation of the dock, including its ID, speed, fee, and the number of EVs recharged.
      * @return A string representation of the dock.
      */
-    public String toString()
-    {
-        return idDock + " " + chargingSpeed + " " + chargingFee + " " + bikesRecharged;
+    @Override
+    public String toString(){
+         return "(Dock: " + idDock + ", " + chargingSpeed + "wh, " 
+             + String.format(java.util.Locale.US, "%.1f", chargingFee) + "€, "
+             + getNumberEVRecharged() + ", "
+             + String.format(java.util.Locale.US, "%.1f", amountCollected) + "€)";
     }    
     
     /**
@@ -70,8 +75,7 @@ public class Dock
      *
      * @return the dock's identifier
      */
-    public String getIdDock()
-    {
+    public String getIdDock(){
         return idDock;
     }
     
@@ -92,10 +96,17 @@ public class Dock
     /**
      * @return The total number of {@link ElectricBike}s that have been recharged by this dock.
      */
-    public int getNumerEVRecharged(){
+    public int getNumberEVRecharged(){
         return bikesRecharged.size();
     }
     
+    /**
+     * @return The list of recharged bikes.
+     */
+    public ArrayList<ElectricBike> getBikesRecharged()
+    {
+        return bikesRecharged;
+    }
     /**
      * @return the amount collected of this dock.
      */
@@ -106,13 +117,14 @@ public class Dock
     /**
      * Simulates the charging process for an {@link ElectricBike}.
      * Increases the amount collected and registers the bike as recharged.
-     * //TODO complete the JavaDoc comments
+     * @return cost of the recharge.
      */
-    public float recharge(int charge, ElectricBike EV){
-        addBike(EV);
-        return charge * chargingFee;
+    public float recharge(int charge, ElectricBike ev){
+        addBike(ev);
+        float cost = charge * chargingFee;
+        amountCollected += cost;
+        return cost;
     }
-
-    //TODO: Complete this code
+    
 
 }
