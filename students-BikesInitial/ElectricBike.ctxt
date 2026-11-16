@@ -1,5 +1,5 @@
 #BlueJ class context
-#Mon Nov 16 01:58:20 CET 2026
+#Mon Nov 16 11:02:02 CET 2026
 comment0.target=ElectricBike
 comment0.text=\r\n Model the common elements of an Electric bike (EB) that operates \r\n within the simulation, moving towards a target and potentially recharging.\r\n * @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes\r\n @author Adri\u00E1n Serrat Leal\r\n @version 2026.10.13\r\n
 comment1.params=company location targetLocation id batteryCapacity
@@ -25,12 +25,12 @@ comment16.params=rechargingLocation
 comment16.target=void setRechargingLocation(Location)
 comment16.text=\r\n Set the aimed recharging location.\r\n @param rechargingLocation The {@link Location} of the next {@link BikeStation} to visit,\r\n                           or {@code null} if no recharge is planned.\r\n
 comment17.target=int getIdleCount()
-comment17.text=\r\n @return The number of consecutive steps the bike has stayed idle.\r\n
+comment17.text=\r\n Returns the steps the bike was idle.\r\n @return The number of consecutive steps the bike has stayed idle.\r\n
 comment18.params=idleCount
 comment18.target=void setIdleCount(int)
 comment18.text=\r\n Change the idle counter of the bike.\r\n @param idleCount New number of consecutive idle steps.\r\n
 comment19.target=int getBatteryCapacity()
-comment19.text=\r\n @return The maximum capacity of the bike's battery (wh).\r\n
+comment19.text=\r\n Returns the maximum capacity of the bike's battery.\r\n @return The maximum capacity of the bike's battery (wh).\r\n
 comment2.target=int getArrivalStep()
 comment2.text=\r\n Returns the arrival step of the bike to its final destination.\r\n @return The arrivalStep of the electric bike.\r\n
 comment20.params=batteryCapacity
@@ -46,7 +46,7 @@ comment23.params=chargesCount
 comment23.target=void setChargesCount(int)
 comment23.text=\r\n Change the amount of recharges done by this bike.\r\n @param chargesCount New number of recharges.\r\n
 comment24.target=float getChargesCost()
-comment24.text=\r\n @return The total cost of the recharges done by this bike (\u20AC).\r\n
+comment24.text=\r\n Returns the toatl cost of the recharges done by this bike\r\n @return The total cost of the recharges done by this bike (\u20AC).\r\n
 comment25.params=chargesCost
 comment25.target=void setChargesCost(float)
 comment25.text=\r\n Change the total cost of the recharges done by this bike.\r\n @param chargesCost New total cost (\u20AC).\r\n

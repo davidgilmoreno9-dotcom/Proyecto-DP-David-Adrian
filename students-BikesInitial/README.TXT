@@ -1,5 +1,6 @@
 Project: EV-Charging-Station-Simulation
 Authors: Professors of the Software Development Course (Desarrollo de Programas)
+Authors: David Gil Moreno and Adrián Serrat Leal
 
 This project is an adaptation of the material for the Software Development (Desarrollo de Programas) 
 course at the University of Extremadura, based on the initial structure of the book:
@@ -16,3 +17,7 @@ The simulation also models the management of Chargers within each station.
 
 How to start this project:
     To run the simulation, create an EVDemo object and invoke its run() method, or execute the static main() method of the EVDemo class.
+The simulation counts with a DemoType enum with 3 types of simulation SIMPLE, MEDIUM and ADVANCED; to choose whose execute edit the DemoType constant on EVDemo class.
+
+The git repository used in the creation of the proyect is:
+https://github.com/davidgilmoreno9-dotcom/Proyecto-DP-David-Adrian.git

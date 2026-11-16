@@ -1,6 +1,5 @@
 import java.util.List;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 /**
  * Model the common elements of an Electric bike (EB) that operates 
@@ -24,7 +23,7 @@ public class ElectricBike
     private int chargesCount;
     private float chargesCost;
     private ArrayList<Dock> docks;
-    private int arrivalStep = -1;
+    private int arrivalStep;
     
     /**
      * Constructor of class ElectricBike.
@@ -194,6 +193,7 @@ public class ElectricBike
     }
     
     /**
+     * Returns the steps the bike was idle.
      * @return The number of consecutive steps the bike has stayed idle.
      */
     public int getIdleCount(){
@@ -209,6 +209,7 @@ public class ElectricBike
     }
     
     /**
+     * Returns the maximum capacity of the bike's battery.
      * @return The maximum capacity of the bike's battery (wh).
      */
     public int getBatteryCapacity(){
@@ -248,6 +249,7 @@ public class ElectricBike
     }
     
     /**
+     * Returns the toatl cost of the recharges done by this bike
      * @return The total cost of the recharges done by this bike (€).
      */
     public float getChargesCost(){

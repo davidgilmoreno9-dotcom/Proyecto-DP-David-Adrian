@@ -1,7 +1,7 @@
 #BlueJ class context
-#Mon Nov 16 01:58:20 CET 2026
+#Mon Nov 16 10:58:16 CET 2026
 comment0.target=EBikeDemo
-comment0.text=\r\n Provides a simple demonstration and simulation environment for the \r\n Electric Bike (EB) and Bike Station model.\r\n It sets up the environment and runs the simulation for a fixed number of steps.\r\n\r\n Scenarios\: \r\n <ul>\r\n <li>Demo SIMPLE (demo\=DemoType.SIMPLE)\: Two bikes are created.</li>\r\n <li>Demo MEDIUM (demo\=DemoType.MEDIUM)\: Five bikes are created.</li>\r\n <li>Demo ADVANCED(demo\=DemoType.ADVANCED)\: Eight bikes are created.</li>\r\n </ul>\r\n * @author DP Clasess\r\n @version 2026\r\n
+comment0.text=\r\n Provides a simple demonstration and simulation environment for the \r\n Electric Bike (EB) and Bike Station model.\r\n It sets up the environment and runs the simulation for a fixed number of steps.\r\n\r\n Scenarios\: \r\n <ul>\r\n <li>Demo SIMPLE (demo\=DemoType.SIMPLE)\: Two bikes are created.</li>\r\n <li>Demo MEDIUM (demo\=DemoType.MEDIUM)\: Five bikes are created.</li>\r\n <li>Demo ADVANCED(demo\=DemoType.ADVANCED)\: Eight bikes are created.</li>\r\n </ul>\r\n @author DP Clasess\r\n @author Adri\u00E1n Serrat Leal and David Gil Moreno\r\n @version 2026\r\n
 comment1.target=EBikeDemo()
 comment1.text=\r\n Constructor for objects of class EBikeDemo.\r\n Initializes the company, bikes, and stations lists, and sets the number of \r\n bikes based on the {@code DEMO} constant before calling {@code reset()}.\r\n
 comment10.target=void showFinalInfo()

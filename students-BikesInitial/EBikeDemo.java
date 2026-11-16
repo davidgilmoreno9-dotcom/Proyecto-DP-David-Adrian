@@ -10,7 +10,8 @@ import java.util.*;
  * <li>Demo MEDIUM (demo=DemoType.MEDIUM): Five bikes are created.</li>
  * <li>Demo ADVANCED(demo=DemoType.ADVANCED): Eight bikes are created.</li>
  * </ul>
- * * @author DP Clasess
+ * @author DP Clasess
+ * @author Adrián Serrat Leal and David Gil Moreno
  * @version 2026
  */
 public class EBikeDemo
