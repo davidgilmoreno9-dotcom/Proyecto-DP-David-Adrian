@@ -4,7 +4,8 @@ import java.util.*;
  * Compares two {@link Dock} objects based on their **ID** string in **ascending** order.
  * This is typically used as a final tie-breaker in multi-criteria sorting.
  * @author DP Clasess
- * @version 2026.10.13
+ * @author Adrian Serrat Leal
+ * @version 2026.11.16
  */
 public class ComparatorDocksId implements Comparator<Dock>
 {
@@ -16,8 +17,8 @@ public class ComparatorDocksId implements Comparator<Dock>
      * @return A negative integer, zero, or a positive integer as the first 
      * dock's ID is lexicographically less than, equal to, or greater than the second.
      */
-    public int compare(Dock c1, Dock c2){  
-        //TODO: Complete this code   
-        return 0;  
-    } 
+    public int compare(Dock c1, Dock c2) {
+        return c1.getIdDock().compareTo(c2.getIdDock());
+    }
 }
+

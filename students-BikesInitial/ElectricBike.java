@@ -56,6 +56,7 @@ public class ElectricBike
     }
    
     /**
+     * Returns the arrival step of the bike to its final destination.
      * @return The arrivalStep of the electric bike.
      */
     public int getArrivalStep(){
@@ -63,27 +64,31 @@ public class ElectricBike
     }
     
     /**
-     * @return El total de ws que se han cargado en la bici.
+     * Returns the current battery level of the bike.
+     * @return The current battery level.
      */
     public int getBatteryLevel(){
         return batteryLevel;
     }
     
     /**
-     * @return El total de ws que se han cargado en la bici.
+     * Returns the total battery recharged in this bike (ws)
+     * @return The total of ws recharged in this bike.
      */
     public int getWsCharged(){
         return wsCharged;
     }
     
      /**
-     * @return El total de veces que se ha cargado la bici.
+     * Returns the amount of recharges done by this bike.
+     * @return The amount of recharges done by the bike.
      */
     public int getChargesCount(){
         return chargesCount;
     }
     
     /**
+     * Returns the collection of docks visited by the bike.
      * @return The docks visited by the bike.
      */
     public ArrayList<Dock> getDocks(){
@@ -91,6 +96,7 @@ public class ElectricBike
     }
     
     /**
+     * Returns the id of the bike
      * @return The id of the electric bike.
      */
     public String getIdBike(){
@@ -98,15 +104,15 @@ public class ElectricBike
     }
 
     /**
-     * Get the the bikes location.
-     * @return Where this bike is located.
+     * Returns the bike actual location.
+     * @return The current bike location.
      */
     public Location getLocation(){
         return location;  
     }
     
     /**
-     * Get the final target location.
+     * Returns the destiny location of the bike.
      * @return Where this bike is ultimately headed.
      */
     public Location getTargetLocation(){
@@ -114,8 +120,8 @@ public class ElectricBike
     }
 
     /**
-     * Get the temporary recharging location.
-     * @return The {@link Location} of the next {@link BikeStation} to visit, or null if no recharge is planned.
+     * Returns the aimed recharging location, {@code null} if the bike is not headed to neither.
+     * @return The {@link Location} of the next {@link BikeStation} to visit, or {@code null} if no recharge is planned.
      */
     public Location getRechargingLocation(){
         return rechargingLocation;
@@ -149,7 +155,129 @@ public class ElectricBike
         arrivalStep = -1;
         calculateRoute();
     }
-
+    
+    /**
+     * Change the identifier of this bike.
+     * @param id New identifier for the bike.
+     */
+    public void setIdBike(String id){
+        idBike = id;
+    }
+    
+    /**
+     * Returns the company that operates this bike.
+     * @return The {@link EBCompany} of the bike.
+     */
+    public EBCompany getCompany(){
+        return company;
+    }
+    
+    /**
+     * Change the company that operates this bike.
+     * @param company New company. Must not be null.
+     * @throws NullPointerException If company is null.
+     */
+    public void setCompany(EBCompany company){
+        if (company == null){
+            throw new NullPointerException("company must not be null");
+        }
+        this.company = company;
+    }
+    
+    /**
+     * Set the aimed recharging location.
+     * @param rechargingLocation The {@link Location} of the next {@link BikeStation} to visit,
+     *                           or {@code null} if no recharge is planned.
+     */
+    public void setRechargingLocation(Location rechargingLocation){
+        this.rechargingLocation = rechargingLocation;
+    }
+    
+    /**
+     * @return The number of consecutive steps the bike has stayed idle.
+     */
+    public int getIdleCount(){
+        return idleCount;
+    }
+    
+    /**
+     * Change the idle counter of the bike.
+     * @param idleCount New number of consecutive idle steps.
+     */
+    public void setIdleCount(int idleCount){
+        this.idleCount = idleCount;
+    }
+    
+    /**
+     * @return The maximum capacity of the bike's battery (wh).
+     */
+    public int getBatteryCapacity(){
+        return batteryCapacity;
+    }
+    
+    /**
+     * Change the maximum capacity of the bike's battery.
+     * @param batteryCapacity New battery capacity (wh).
+     */
+    public void setBatteryCapacity(int batteryCapacity){
+        this.batteryCapacity = batteryCapacity;
+    }
+    
+    /**
+     * Change the current battery level of the bike.
+     * @param batteryLevel New battery level (wh).
+     */
+    public void setBatteryLevel(int batteryLevel){
+        this.batteryLevel = batteryLevel;
+    }
+    
+    /**
+     * Change the total energy recharged in this bike.
+     * @param wsCharged New total of ws recharged.
+     */
+    public void setWsCharged(int wsCharged){
+        this.wsCharged = wsCharged;
+    }
+    
+    /**
+     * Change the amount of recharges done by this bike.
+     * @param chargesCount New number of recharges.
+     */
+    public void setChargesCount(int chargesCount){
+        this.chargesCount = chargesCount;
+    }
+    
+    /**
+     * @return The total cost of the recharges done by this bike (€).
+     */
+    public float getChargesCost(){
+        return chargesCost;
+    }
+    
+    /**
+     * Change the total cost of the recharges done by this bike.
+     * @param chargesCost New total cost (€).
+     */
+    public void setChargesCost(float chargesCost){
+        this.chargesCost = chargesCost;
+    }
+    
+    /**
+     * Replace the collection of docks visited by the bike.
+     * @param docks New list of visited docks.
+     */
+    public void setDocks(ArrayList<Dock> docks){
+        this.docks = docks;
+    }
+    
+    /**
+     * Change the arrival step of the bike to its final destination.
+     * @param arrivalStep New arrival step (-1 if it has not arrived yet).
+     */
+    public void setArrivalStep(int arrivalStep){
+        this.arrivalStep = arrivalStep;
+    }
+    
     /**
      * Calculates the optimal route for the bike.
      * If there is enough battery to reach the target, it changes the rechargingLocation to null.
@@ -235,9 +363,12 @@ public class ElectricBike
     /**
      * Carries out a single step of the bike's actions.
      * Moves one step towards the target (recharging or final) or stays idle.
-     * First, recalculates the route. If no recharge is needed, it notifies when 
-     * approaching the target destination and moves forward. 
-     * If a recharge is needed, it checks if the bike is at the station to use a free dock and moves towards it. 
+     * 
+     * <p> If no recharge is needed, it notifies 
+     *     when approaching the target destination and moves forward. <p>
+     * <p> If a recharge is needed, checks if it can recharge and show when it does,
+     *     if it is far from the station, moves, if possible, one step closer.<p>
+     * 
      * Finally, it prints the bike's current status to the console.
      *
      * @param step The current step of the simulation.

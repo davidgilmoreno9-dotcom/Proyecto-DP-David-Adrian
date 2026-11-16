@@ -4,6 +4,7 @@ import java.util.*;
  * Compares two {@link BikeStation} objects based on their ID in ascending order.
  * This can be used for sorting lists of Bike stations.
  * @author DP Clasess
+ * @author David Gil Moreno
  * @version 2026.10.13
  */
 public class ComparatorBikeStationId implements Comparator<BikeStation>

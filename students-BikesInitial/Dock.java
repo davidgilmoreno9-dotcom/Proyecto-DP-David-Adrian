@@ -19,9 +19,9 @@ public class Dock
 
     /**
      * Constructor for objects of class Dock.
-     * @param id. The id of the dock.
-     * @param speed. The charging speed of the dock.
-     * @param fee. The charging fee of the dock.
+     * @param id The id of the dock.
+     * @param speed The charging speed of the dock.
+     * @param fee The charging fee of the dock.
      */
     public Dock(String id, int speed, float fee)
     {
@@ -35,7 +35,7 @@ public class Dock
 
     /**
      * Add an {@link ElectricBike} to the bikesRecharged list.
-     * @param  EV. An {@link ElectricBike} to add.
+     * @param  ev The {@link ElectricBike} to add.
      */
     public void addBike(ElectricBike ev){
         bikesRecharged.add(ev);
@@ -43,7 +43,7 @@ public class Dock
     
     /**
      * Change the value of amountCollected to amount.
-     * @param amount. New amount of amountCollected.
+     * @param amount New amount of amountCollected.
      */
     public void setAmountCollected(float amount){
         amountCollected = amount;
@@ -51,7 +51,7 @@ public class Dock
     
     /**
      * Change the value of amountCollected to amount.
-     * @param amount. New amount of amountCollected.
+     * @param amount New amount of amountCollected.
      */
     public void setOcupedDock(){
         free = false;
@@ -59,7 +59,7 @@ public class Dock
     
     
     /**
-     * Returns a string representation of the dock, including its ID, speed, fee, and the number of EVs recharged.
+     * Returns a string representation of the dock, including its ID, speed, fee, and the number of electric bikes recharged.
      * @return A string representation of the dock.
      */
     @Override
@@ -72,7 +72,6 @@ public class Dock
     
     /**
      * Returns the identifier of this dock.
-     *
      * @return the dock's identifier
      */
     public String getIdDock(){
@@ -80,6 +79,7 @@ public class Dock
     }
     
     /**
+     * Returns the charging speed of the dock
      * @return The charging speed of this dock.
      */
     public int getChargingSpeed(){
@@ -87,6 +87,7 @@ public class Dock
     }
 
     /**
+     * Returns the charging fee of the dock
      * @return The charging fee of the dock.
      */
     public float getChargingFee(){
@@ -94,7 +95,8 @@ public class Dock
     }
 
     /**
-     * @return The total number of {@link ElectricBike}s that have been recharged by this dock.
+     * Returns the number of bikes recharged in this dock
+     * @return The total number of {@link ElectricBike}s that recharged in this dock.
      */
     public int getNumberEVRecharged(){
         return bikesRecharged.size();
@@ -102,6 +104,7 @@ public class Dock
     
     
     /**
+     * Returns the amount of money (€) collected in this dock
      * @return The total number of money collected by this dock.
      */
     public float getAmountCollected(){
@@ -109,17 +112,52 @@ public class Dock
     }
     
     /**
+     * Returns the collection of recharged bikes in this dock
      * @return The list of recharged bikes.
      */
     public ArrayList<ElectricBike> getBikesRecharged()
     {
         return bikesRecharged;
     }
+    
     /**
+     * Returns the dock state, free
      * @return the amount collected of this dock.
      */
     public boolean getDockFree(){
         return free;
+    }
+    
+    /**
+     * Change the identifier of this dock.
+     * @param id New identifier for the dock.
+     */
+    public void setIdDock(String id){
+        idDock = id;
+    }
+    
+    /**
+     * Change the charging speed of this dock.
+     * @param speed New charging speed (wh).
+     */
+    public void setChargingSpeed(int speed){
+        chargingSpeed = speed;
+    }
+    
+    /**
+     * Change the charging fee of this dock.
+     * @param fee New charging fee (€ per wh).
+     */
+    public void setChargingFee(float fee){
+        chargingFee = fee;
+    }
+    
+    /**
+     * Replace the list of recharged bikes.
+     * @param bikes New list of recharged bikes.
+     */
+    public void setBikesRecharged(ArrayList<ElectricBike> bikes){
+        bikesRecharged = bikes;
     }
 
     /**

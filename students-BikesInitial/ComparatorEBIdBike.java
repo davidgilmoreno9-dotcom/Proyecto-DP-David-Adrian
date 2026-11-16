@@ -4,6 +4,7 @@ import java.util.*;
  * Compares two {@link ElectricBike} objects based on their id string in ascending order.
  * This can be used for sorting lists of electric bikes.
  * @author DP Clasess
+ * @author David Gil Moreno
  * @version 2026.10.13
  */
 public class ComparatorEBIdBike implements Comparator<ElectricBike>

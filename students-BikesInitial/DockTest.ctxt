@@ -1,7 +1,7 @@
 #BlueJ class context
-#Sun Nov 15 22:56:07 CET 2026
+#Mon Nov 16 01:58:20 CET 2026
 comment0.target=DockTest
-comment0.text=\r\n The test class DockTest.\r\n\r\n @author  (your name)\r\n @version (a version number or a date)\r\n
+comment0.text=\r\n The test class DockTest.\r\n\r\n @author  David Gil Moreno\r\n @version 15/11/2026\r\n
 comment1.target=DockTest()
 comment1.text=\r\n Default constructor for test class DockTest\r\n
 comment2.target=void setUp()

@@ -5,6 +5,7 @@ import java.util.*;
  * It manages a fleet of {@link ElectricBike}s and a network of {@link BikeStation}s.
  * * @author David J. Barnes and Michael Kölling
  * @author DP classes
+ * @author David Gil Moreno
  * @version 2026.10.13
  */
 public class EBCompany  
@@ -98,6 +99,45 @@ public class EBCompany
         return null;
     }
     
+    /**
+     * Change the name of the company.
+     * @param name New name for the company.
+     */
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    /**
+     * Returns the fleet of bikes subscribed to this company.
+     * @return The list of {@link ElectricBike}s.
+     */
+    public ArrayList<ElectricBike> getSubscribedBikes(){
+        return subscribed_bikes;
+    }
+    
+    /**
+     * Replace the fleet of bikes subscribed to this company.
+     * @param bikes New list of {@link ElectricBike}s.
+     */
+    public void setSubscribedBikes(ArrayList<ElectricBike> bikes){
+        this.subscribed_bikes = bikes;
+    }
+    
+    /**
+     * Returns the network of stations managed by this company.
+     * @return The list of {@link BikeStation}s.
+     */
+    public ArrayList<BikeStation> getStations(){
+        return stations;
+    }
+    
+    /**
+     * Replace the network of stations managed by this company.
+     * @param stations New list of {@link BikeStation}s.
+     */
+    public void setStations(ArrayList<BikeStation> stations){
+        this.stations = stations;
+    }
     
     /**
      * @return The total number of managed {@link ElectricBikes}s.

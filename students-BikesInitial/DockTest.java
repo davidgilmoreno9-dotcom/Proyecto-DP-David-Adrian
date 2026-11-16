@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 /**
  * The test class DockTest.
  *
- * @author  (your name)
- * @version (a version number or a date)
+ * @author  David Gil Moreno
+ * @version 15/11/2026
  */
 public class DockTest
 {

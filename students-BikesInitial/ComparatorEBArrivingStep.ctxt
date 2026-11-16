@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sun Nov 15 22:56:12 CET 2026
+#Mon Nov 16 01:58:20 CET 2026
 comment0.target=ComparatorEBArrivingStep
 comment0.text=\r\n Compares two {@link ElectricBike} objects based on the step in which they\r\n reached their target destination, in ascending order.\r\n Bikes that have not arrived yet ({@code arrivalStep \=\= -1}) are considered\r\n to arrive last. Ties are broken by their ID in ascending order.\r\n @author Adrian Serrat Leal\r\n @version 2026.11.15\r\n
 comment1.params=eb1 eb2

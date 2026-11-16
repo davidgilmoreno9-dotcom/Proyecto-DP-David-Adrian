@@ -1,12 +1,24 @@
 #BlueJ class context
-#Sun Nov 15 22:59:05 CET 2026
+#Mon Nov 16 01:58:20 CET 2026
 comment0.target=EBCompany
-comment0.text=\r\n Models the operation of an Electric Bike (EB) Company. \r\n It manages a fleet of {@link ElectricBike}s and a network of {@link BikeStation}s.\r\n * @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes\r\n @version 2026.10.13\r\n
+comment0.text=\r\n Models the operation of an Electric Bike (EB) Company. \r\n It manages a fleet of {@link ElectricBike}s and a network of {@link BikeStation}s.\r\n * @author David J. Barnes and Michael K\u00F6lling\r\n @author DP classes\r\n @author David Gil Moreno\r\n @version 2026.10.13\r\n
 comment1.params=name
 comment1.target=EBCompany(java.lang.String)
 comment1.text=\r\n Constructor for objects of class EVCompany.\r\n @param name The name of the company.\r\n
-comment10.target=void reset()
-comment10.text=\r\n Clears all managed bikes and stations, resetting the company to an empty state.\r\n
+comment10.params=bikes
+comment10.target=void setSubscribedBikes(java.util.ArrayList)
+comment10.text=\r\n Replace the fleet of bikes subscribed to this company.\r\n @param bikes New list of {@link ElectricBike}s.\r\n
+comment11.target=java.util.ArrayList getStations()
+comment11.text=\r\n Returns the network of stations managed by this company.\r\n @return The list of {@link BikeStation}s.\r\n
+comment12.params=stations
+comment12.target=void setStations(java.util.ArrayList)
+comment12.text=\r\n Replace the network of stations managed by this company.\r\n @param stations New list of {@link BikeStation}s.\r\n
+comment13.target=int getNumberOfStations()
+comment13.text=\r\n @return The total number of managed {@link ElectricBikes}s.\r\n
+comment14.target=int getNumberOfBikes()
+comment14.text=\r\n @return The total number of bikes {@link BikeStation}s.\r\n
+comment15.target=void reset()
+comment15.text=\r\n Clears all managed bikes and stations, resetting the company to an empty state.\r\n
 comment2.target=java.lang.String getName()
 comment2.text=\r\n @return the name of the EBCompany \r\n
 comment3.params=bike
@@ -24,8 +36,9 @@ comment6.text=\r\n Finds the closest {@link BikeStation} to the given origin tha
 comment7.params=location
 comment7.target=BikeStation getBikeStation(Location)
 comment7.text=\r\n Retrieves a {@link BikeStation} by its {@link Location}.\r\n @param location The {@link Location} of the station to find.\r\n @return The {@link BikeStation} at the matching location, or {@code null} if not found.\r\n
-comment8.target=int getNumberOfStations()
-comment8.text=\r\n @return The total number of managed {@link ElectricBikes}s.\r\n
-comment9.target=int getNumberOfBikes()
-comment9.text=\r\n @return The total number of bikes {@link BikeStation}s.\r\n
-numComments=11
+comment8.params=name
+comment8.target=void setName(java.lang.String)
+comment8.text=\r\n Change the name of the company.\r\n @param name New name for the company.\r\n
+comment9.target=java.util.ArrayList getSubscribedBikes()
+comment9.text=\r\n Returns the fleet of bikes subscribed to this company.\r\n @return The list of {@link ElectricBike}s.\r\n
+numComments=16

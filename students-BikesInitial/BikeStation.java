@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
  * Models an Electric Vehicle Charging Station.
  * A charging station contains multiple {@link Dock} units.
  * @author DP classes 
+ * @author David Gil Moreno
  * @version 2026.10.13
  */
 public class BikeStation
@@ -38,6 +39,22 @@ public class BikeStation
     }
     
     /**
+     * Change the identifier of this bike station.
+     * @param id New identifier for the station.
+     */
+    public void setIdStation(String id){
+        idStation = id;
+    }
+    
+    /**
+     * Replace the collection of docks of this station.
+     * @param docks New list of docks.
+     */
+    public void setDocks(ArrayList<Dock> docks){
+        this.docks = docks;
+    }
+    
+    /**
      * Retrieves the first free {@link Dock} found at the station.
      * @return A free {@link Dock}, or possibly throws an exception if none are found (depending on stream implementation details).
      * **Note: The implementation assumes at least one free dock exists if called.**
@@ -53,6 +70,7 @@ public class BikeStation
     }
     
     /**
+     * Returns number of docks in the bike station
      * @return The total number of bikes {@link Docks}s.
      */
     public int getNumberOfDocks(){
@@ -79,11 +97,15 @@ public class BikeStation
      */
     public void setLocation(Location location)
     {
-       this.location = location;   
+        if (location==null){
+            throw new NullPointerException("location can not be null");   
+        }
+        this.location = location;
     }
     
     /**
-     * @return The unique identifier of the charging station.
+     * Returns the actual location of the bike station.
+     * @return The location of the station.
      */
     public Location getLocation()
     {
@@ -91,6 +113,7 @@ public class BikeStation
     }
 
     /**
+     * Returns the id of the bike station.
      * @return The unique identifier of the charging station.
      */
     public String getId()
@@ -99,7 +122,8 @@ public class BikeStation
     }
     
     /**
-     * @return La coleccion de docks que hay en la estación.
+     * Returns the dock collection in bike station.
+     * @return The dock collection in the station.
      */
     public ArrayList<Dock> getDocks()
     {   
@@ -108,7 +132,9 @@ public class BikeStation
     
     
     /**
-     * @return el dock con el id que hemos establecido.
+     * Returns the dock with the {@code id}.
+     * @param id. Identificator of the dock to return.
+     * @return The dock with the specified id.
      */
     public Dock getDock(String id)
     {   
